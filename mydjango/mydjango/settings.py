@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'blog'
 ]
 
@@ -72,7 +73,7 @@ WSGI_APPLICATION = 'mydjango.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/blog/'  #to make it better we should specify where to redirect the user upon a successful login.
 LOGOUT_REDIRECT_URL = '/'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
