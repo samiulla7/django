@@ -22,6 +22,18 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
     path('', TemplateView.as_view(template_name='home.html'), name='home'), # new
+    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    # Here Aboutview is fuction in views
+    # which is like below
+    # def AboutView(TemplateView):
+    #     template_name='about.html'
+    
+    #     def get_context_data(self, **kwargs):
+    #         context = super().get_context_data(**kwargs)
+    #         context['latest_articles'] = Article.objects.all()[:5]
+    #         return context
+    # path('about/', AboutView.as_view(), name='about'),
+
 ]
 
 # accounts/login/ [name='login']

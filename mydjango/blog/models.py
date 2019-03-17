@@ -20,3 +20,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+class UserProfile(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    email = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    created_date = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.email
