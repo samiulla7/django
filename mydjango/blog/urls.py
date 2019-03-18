@@ -1,5 +1,6 @@
 from django.urls import path,include,re_path
 from . import views
+from .reg_views import RegistrationFormView
 urlpatterns = [
     # re_path(r'^$', views.hello, name="hello"),
     path('static_list', views.post_list, name='post_list'),
@@ -9,4 +10,6 @@ urlpatterns = [
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('signup/', views.signup, name='signup'),
     path('registration/', views.registration, name='registration'),
+    path('reg/', RegistrationFormView.as_view(), name='reg-view'),
+    
 ]

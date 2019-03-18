@@ -17,12 +17,20 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from django.views.generic.base import TemplateView # new
 
+
+from django.conf import settings
+from django.conf.urls import include, url  # For django versions before 2.0
+from django.urls import include, path  # For django versions from 2.0 and up
+import debug_toolbar
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
     path('', TemplateView.as_view(template_name='home.html'), name='home'), # new
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+
+    # path('__debug__/', include(debug_toolbar.urls)),
     # Here Aboutview is fuction in views
     # which is like below
     # def AboutView(TemplateView):
@@ -44,3 +52,14 @@ urlpatterns = [
 # accounts/password_reset/done/ [name='password_reset_done']
 # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
 # accounts/reset/done/ [name='password_reset_complete']
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+
+        # For django versions before 2.0:
+        # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+    ] + urlpatterns
